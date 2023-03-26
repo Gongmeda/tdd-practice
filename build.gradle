@@ -19,3 +19,17 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.register('integrationFastTest', Test) {
+    useJUnitPlatform({
+        includeTags 'integration'
+        excludeTags 'slow | very-slow'
+    })
+}
+
+tasks.register('integrationTest', Test) {
+    useJUnitPlatform({
+        includeTags 'integration'
+        includeTags 'slow | very-slow'
+    })
+}
